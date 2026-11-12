@@ -88,8 +88,8 @@ export function HeroSection({ settings }: HeroSectionProps) {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
-        <div className="lg:col-span-7">
-          <div className="animate-fade-up inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/10 bg-white/5 backdrop-blur px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold">
+        <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div className="animate-fade-up inline-flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 rounded-full border border-white/10 bg-white/5 backdrop-blur px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold">
             {isOpen !== null && (
               <span className={`inline-flex items-center gap-1.5 ${isOpen ? 'text-emerald-300' : 'text-brand-sun'}`}>
                 <span className={`w-2 h-2 rounded-full ${isOpen ? 'bg-emerald-400 animate-pulse-dot' : 'bg-brand-sun'}`} />
@@ -102,20 +102,20 @@ export function HeroSection({ settings }: HeroSectionProps) {
             </span>
           </div>
 
-          <h1 className="animate-fade-up delay-1 font-display font-extrabold uppercase text-[38px] leading-[1.03] sm:text-6xl lg:text-[72px] tracking-[-0.03em] text-white mt-6">
-            Anand&apos;s PS5 &amp;
+          <h1 className="animate-fade-up delay-1 font-display font-extrabold uppercase text-[30px] leading-[1.08] sm:text-5xl lg:text-[62px] tracking-[-0.02em] text-white mt-5 sm:mt-6">
+            Welcome to
             <br />
-            G29 <span className="text-sunset">Gaming Zone.</span>
+            <span className="text-sunset">Gaming Station</span>
           </h1>
 
-          <p className="animate-fade-up delay-2 mt-6 max-w-xl text-base sm:text-lg text-brand-muted leading-relaxed">
+          <p className="animate-fade-up delay-2 mt-5 sm:mt-6 max-w-xl mx-auto lg:mx-0 text-sm sm:text-lg text-brand-muted leading-relaxed">
             Play Fighting, Racing, Action &amp; Sports titles at {settings.shopName} starting at{' '}
             <strong className="text-white">{formatINR(regularRate)}/hr</strong>, drive our{' '}
             <strong className="text-white">Logitech G29 Racing Simulator</strong> at{' '}
             <strong className="text-white">{formatINR(g29Rate)}/hr</strong>, or rent a PS5 console home.
           </p>
 
-          <div className="animate-fade-up delay-3 mt-8 flex flex-col sm:flex-row gap-3">
+          <div className="animate-fade-up delay-3 mt-7 sm:mt-8 w-full sm:w-auto flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-3">
             <Link
               href="/book"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-primary hover:bg-brand-hover text-white font-bold px-7 py-4 shadow-glow transition-colors tap-target"
@@ -185,7 +185,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
         <dl className="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-3xl overflow-hidden bg-white/10 border border-white/10">
           {stats.map((s) => (
-            <div key={s.label} className="bg-brand-base/80 backdrop-blur px-5 py-5 sm:py-6">
+            <div key={s.label} className="bg-brand-base/80 backdrop-blur px-4 sm:px-5 py-5 sm:py-6 text-center lg:text-left">
               <dt className="sr-only">{s.label}</dt>
               <dd className="font-display font-bold text-xl sm:text-2xl text-white tabular-nums">{s.value}</dd>
               <dd className="text-xs sm:text-sm text-brand-muted mt-1">{s.label}</dd>
