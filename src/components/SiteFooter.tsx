@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Instagram, MessageCircle, X } from 'lucide-react';
-import { formatHourShort, formatINR, getRentalPackagePrice, getSlotPackagePrice } from '@/lib/booking-rules';
+import { formatHourShort, formatINR, getRentalPackagePrice, getSlotPriceForTier } from '@/lib/booking-rules';
 import type { AdminSettings } from '@/types/booking';
 import { Logo } from '@/components/Logo';
 import { waLink } from '@/components/InfoSections';
@@ -50,9 +50,9 @@ export function SiteFooter({ settings }: { settings: AdminSettings }) {
         <div className="lg:col-span-2">
           <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Explore</h4>
           <ul className="space-y-2.5 text-sm text-brand-muted">
+            <li><Link href="/#games" className="hover:text-white">Games &amp; Sim</Link></li>
             <li><Link href="/#pricing" className="hover:text-white">Pricing</Link></li>
             <li><Link href="/#how-it-works" className="hover:text-white">How it works</Link></li>
-            <li><Link href="/#faq" className="hover:text-white">FAQ</Link></li>
             <li><Link href="/#visit" className="hover:text-white">Visit us</Link></li>
           </ul>
         </div>
@@ -60,7 +60,8 @@ export function SiteFooter({ settings }: { settings: AdminSettings }) {
         <div className="lg:col-span-2">
           <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Book</h4>
           <ul className="space-y-2.5 text-sm text-brand-muted">
-            <li><Link href="/book" className="hover:text-white">Station slot · {formatINR(getSlotPackagePrice(1, settings))}/hr</Link></li>
+            <li><Link href="/book" className="hover:text-white">Regular PS5 · {formatINR(getSlotPriceForTier(1, 'regular', settings))}/hr</Link></li>
+            <li><Link href="/book?tier=g29" className="hover:text-white">G29 Racing Sim · {formatINR(getSlotPriceForTier(1, 'g29', settings))}/hr</Link></li>
             <li><Link href="/book?mode=rent" className="hover:text-white">PS5 rental · {formatINR(getRentalPackagePrice(1, settings))}/day</Link></li>
             <li>
               <button type="button" onClick={() => setTermsOpen(true)} className="hover:text-white text-left">
@@ -112,8 +113,8 @@ export function SiteFooter({ settings }: { settings: AdminSettings }) {
             </div>
             <ol className="space-y-4 text-sm text-brand-muted leading-relaxed list-decimal pl-5 marker:text-brand-accent marker:font-bold">
               <li>
-                <strong className="text-white">Rates.</strong> Station slots cost {formatINR(getSlotPackagePrice(1, settings))} (1 hour) to{' '}
-                {formatINR(getSlotPackagePrice(4, settings))} (4 hours). PS5 rentals cost {formatINR(getRentalPackagePrice(1, settings))} (1 day) to{' '}
+                <strong className="text-white">Rates.</strong> Regular PS5 slots cost {formatINR(getSlotPriceForTier(1, 'regular', settings))}/hr and
+                Logitech G29 Racing Sim costs {formatINR(getSlotPriceForTier(1, 'g29', settings))}/hr. PS5 rentals cost {formatINR(getRentalPackagePrice(1, settings))} (1 day) to{' '}
                 {formatINR(getRentalPackagePrice(7, settings))} (7 days).
               </li>
               <li>

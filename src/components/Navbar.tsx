@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 
 interface NavbarProps {
@@ -53,25 +53,15 @@ export function Navbar({ shopName = 'GAMING STATION' }: NavbarProps) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Link
-            href="/book"
-            className="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-brand-primary hover:bg-brand-hover text-white font-bold text-sm px-4 sm:px-5 py-2.5 shadow-glow transition-colors"
-          >
-            Book<span className="hidden sm:inline"> a Slot</span>
-            <ArrowRight className="hidden sm:block w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/10 text-white hover:bg-white/5 transition-colors"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-          >
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/10 text-white hover:bg-white/5 transition-colors"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+        >
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
 
       {open && (
@@ -86,13 +76,6 @@ export function Navbar({ shopName = 'GAMING STATION' }: NavbarProps) {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/book?mode=rent"
-            onClick={() => setOpen(false)}
-            className="mt-2 px-4 py-3 rounded-xl text-base font-semibold text-brand-glow border border-brand-border tap-target flex items-center justify-between"
-          >
-            Rent a PS5 for home <ArrowRight className="w-4 h-4" />
-          </Link>
         </nav>
       )}
     </header>

@@ -13,7 +13,6 @@ import {
   MapPin,
   MessageCircle,
   Phone,
-  Plus,
   Swords,
   Trophy,
   Wallet
@@ -148,32 +147,6 @@ export function InfoSections({ settings }: InfoSectionsProps) {
     { title: 'Pick setup, date & hours', body: `Choose Regular PS5 (${formatINR(regularHour)}/hr), G29 Sim (${formatINR(g29Hour)}/hr), or 1–7 day home rental between ${hours}.` },
     { title: 'Add your name and mobile', body: 'Just a name and a 10-digit Indian mobile number. Nothing else to fill.' },
     { title: 'Send it on WhatsApp', body: 'Your request goes straight to our WhatsApp counter. Admin reviews and approves fast.' }
-  ];
-
-  const faqs = [
-    {
-      q: 'How much does gaming cost at GAMING STATION?',
-      a: `Regular PS5 games (Action, Fighting, Sports, Racing & Squad) are ${formatINR(regularHour)}/hour per station. Logitech G29 Racing Simulator is ${formatINR(g29Hour)}/hour. There is no per-player fee.`
-    },
-    {
-      q: 'What games are available to play?',
-      a: 'We stock Fighting (Tekken 8, Mortal Kombat 1, WWE 2K25, UFC 5), Racing (Gran Turismo 7, F1 24, Need for Speed), Action (GTA V, Spider-Man 2, RDR2, God of War), and Sports (EA FC 25, Cricket 24, NBA 2K).'
-    },
-    {
-      q: 'What are your timings?',
-      a: `${settings.shopName} is open ${hours} every day (Asia/Kolkata time).`
-    },
-    {
-      q: 'How do I know my booking is confirmed?',
-      a: settings.holdPendingSlots
-        ? `After you send your order on WhatsApp, our team reviews and approves it. Your time slot is held for ${settings.pendingHoldMinutes} minutes while waiting.`
-        : 'After you send your booking on WhatsApp, the shop approves it. Refresh the receipt page anytime to see Confirmed status.'
-    },
-    {
-      q: 'Can I rent a PS5 for home?',
-      a: `Yes! Home rentals run 1 to 7 days (${formatINR(dayOne)} for 1 day up to ${formatINR(getRentalPackagePrice(7, settings))} for 7 days). Choose COD (${formatINR(settings.rentalCodFee)} online confirmation fee) or Full Online payment.`
-    },
-    { q: 'What if I need to cancel?', a: settings.cancellationRules }
   ];
 
   const ticker = [
@@ -458,42 +431,6 @@ export function InfoSections({ settings }: InfoSectionsProps) {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 sm:py-28 border-t border-white/5" aria-labelledby="faq-title">
-        <div className={`${wrap} grid grid-cols-1 lg:grid-cols-12 gap-10`}>
-          <div className="lg:col-span-4">
-            <SectionHead id="faq" kicker="FAQ" title={<span id="faq-title">Good to know.</span>}>
-              Still unsure? Message us on WhatsApp and we will help you pick a slot.
-            </SectionHead>
-            {wa && (
-              <a
-                href={wa}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-[#062d16] font-bold px-5 py-3 transition-colors tap-target"
-              >
-                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
-              </a>
-            )}
-          </div>
-          <div className="lg:col-span-8 space-y-3">
-            {faqs.map((f, i) => (
-              <details
-                key={f.q}
-                open={i === 0}
-                className="group rounded-2xl border border-white/[0.07] bg-brand-surface open:border-brand-accent/30 transition-colors"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 sm:px-6 py-5 font-display font-bold text-[15px] sm:text-base text-white [&::-webkit-details-marker]:hidden">
-                  {f.q}
-                  <Plus className="w-5 h-5 shrink-0 text-brand-accent transition-transform duration-300 group-open:rotate-45" />
-                </summary>
-                <p className="px-5 sm:px-6 pb-5 -mt-1 text-sm sm:text-[15px] text-brand-muted leading-relaxed max-w-2xl">{f.a}</p>
-              </details>
-            ))}
-          </div>
         </div>
       </section>
 
